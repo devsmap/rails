@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgresql:5432/devsmap?encoding=utf8&pool=5&timeout=5000
+      - AIRBRAKE_PROJECT_ID=311097
+      - AIRBRAKE_API_KEY=7db5cef6f2e6cc3c6349d7f358fae4ba
+      - RAILS_MAX_THREAD=1
+      - PORT=3000
+      - RAILS_ENV=development
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgresql
+    volumes:
+      - '.:/app'            
+
+  postgresql:
+    image: postgres
+    restart: "no"
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: devsmap_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgresdb:/var/lib/postgresql/data/            
+
+volumes:
+  postgresdb:

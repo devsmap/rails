@@ -1,0 +1,221 @@
+# Portuguese translations for app package.
+# Copyright (C) 2021 app
+# This file is distributed under the same license as the app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: app 1.0\n"
+"Report-Msgid-Bugs-To: contact@translation.io\n"
+"POT-Creation-Date: 2021-03-26 20:56+0000\n"
+"PO-Revision-Date: 2021-03-26 21:56+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Portuguese\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"\n"
+
+#: ../../../app/controllers/users_controller.rb:13
+msgid "Nome não pode ficar em branco"
+msgstr ""
+
+#: ../../../app/controllers/users_controller.rb:19
+msgid "Username não pode ficar em branco"
+msgstr ""
+
+#: ../../../app/views/dashboard/show.html.erb:12
+msgid "out of"
+msgstr "de"
+
+#: ../../../app/views/devise/passwords/new.html.erb:3
+msgid "Please, put your account email"
+msgstr "Por favor, digite o email cadastrado"
+
+#: ../../../app/views/devise/passwords/new.html.erb:4
+msgid "We’ll send an email with the instructions"
+msgstr "We sended to you an email to confirm your access"
+
+#: ../../../app/views/devise/passwords/new.html.erb:8
+msgid "Continue"
+msgstr "Continuar"
+
+#: ../../../app/views/devise/passwords/new.html.erb:15
+#: ../../../app/views/devise/registrations/new.html.erb:53
+#: ../../../app/views/users/pages/see_your_email.html.erb:13
+msgid "Privacy"
+msgstr "Privacidade"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:6
+msgid "Back"
+msgstr "Voltar"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:12
+msgid "Your informations"
+msgstr "Suas informações"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:19
+#: ../../../app/views/users/profile_empty.html.erb:16
+msgid "Name"
+msgstr "Nome"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:23
+msgid "Social Links"
+msgstr "Links sociais"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:118
+msgid "Security"
+msgstr "Segurança"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:119
+#: ../../../app/views/devise/registrations/new.html.erb:9
+#: ../../../app/views/devise/sessions/new.html.erb:11
+msgid "Password"
+msgstr "Senha"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:120
+msgid "Password Confirmation"
+msgstr "Confirme a senha"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:122
+msgid "Save Profile"
+msgstr "Salvar perfil"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:127
+#: ../../../app/views/users/profile_empty.html.erb:24
+msgid "Help"
+msgstr "Ajuda"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:131
+msgid "Logout"
+msgstr "Deslogar"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:134
+msgid "Delete Accout"
+msgstr "Deletar conta"
+
+#: ../../../app/views/devise/registrations/edit.html.erb:134
+msgid "Are you sure?"
+msgstr "Você tem certeza"
+
+#: ../../../app/views/devise/registrations/new.html.erb:4
+msgid "Sign up for your diip account"
+msgstr "Registre sua conta diip"
+
+#: ../../../app/views/devise/registrations/new.html.erb:10
+msgid "Repeat password"
+msgstr "Repetir senha"
+
+#: ../../../app/views/devise/registrations/new.html.erb:12
+msgid "Register"
+msgstr "Registre-se"
+
+#: ../../../app/views/devise/registrations/new.html.erb:14
+msgid "Or connect with:"
+msgstr "Ou conecte-se com:"
+
+#: ../../../app/views/devise/registrations/new.html.erb:46
+msgid ""
+"By using this service you are agreeing to the terms of service and privacy pol"
+"icy"
+msgstr ""
+"Ao usar esse serviço você estará concordando com os termos de serviço e políti"
+"ca de privacidade"
+
+#: ../../../app/views/devise/registrations/new.html.erb:50
+msgid "Already have an account?"
+msgstr "Já possui uma conta?"
+
+#: ../../../app/views/devise/sessions/new.html.erb:5
+msgid "Create your own"
+msgstr "Crie seu próprio "
+
+#: ../../../app/views/devise/sessions/new.html.erb:5
+msgid "recommendation catalog"
+msgstr "catálogo de recomendações"
+
+#: ../../../app/views/devise/sessions/new.html.erb:7
+msgid "Login to continue your diip admin"
+msgstr "Entre com sua conta diip para continuar"
+
+#: ../../../app/views/devise/sessions/new.html.erb:14
+msgid "Login"
+msgstr "Entrar"
+
+#: ../../../app/views/devise/sessions/new.html.erb:40
+msgid "Create your diip"
+msgstr "Crie seu diip"
+
+#: ../../../app/views/devise/sessions/new.html.erb:44
+msgid "Forgot your password? Click to reset"
+msgstr ""
+"Esqueceu sua senha? Clique para resetar\n"
+
+#: ../../../app/views/devise/sessions/new.html.erb:51
+msgid "Support"
+msgstr "Suporte"
+
+#: ../../../app/views/layouts/dashbord.html.erb:5
+#: ../../../app/views/layouts/dashbord.html.erb:13
+#: ../../../app/views/layouts/profile.html.erb:5
+#: ../../../app/views/layouts/profile.html.erb:13
+msgid "diip. Create your own recommendation catalog"
+msgstr ""
+
+#: ../../../app/views/layouts/dashbord.html.erb:34
+msgid "My"
+msgstr "Meu"
+
+#: ../../../app/views/layouts/dashbord.html.erb:56
+msgid "Tips"
+msgstr ""
+
+#: ../../../app/views/layouts/dashbord.html.erb:57
+msgid "Analytics"
+msgstr "Analytics"
+
+#: ../../../app/views/layouts/login.html.erb:5
+#: ../../../app/views/layouts/login.html.erb:13
+msgid ""
+"Give your social profiles a twist with a tidy place to recommend media, books,"
+" products and more!"
+msgstr ""
+
+#: ../../../app/views/layouts/login.html.erb:12
+msgid "diip | Create your own recommendation catalog"
+msgstr ""
+
+#: ../../../app/views/users/pages/see_your_email.html.erb:3
+msgid "Okay, let’s go"
+msgstr "Tudo bem, vamos lá"
+
+#: ../../../app/views/users/pages/see_your_email.html.erb:5
+msgid "We sended to you an email to confirm your access"
+msgstr ""
+"Nós enviamos para você um email para confirmar o seu acesso \n"
+
+#: ../../../app/views/users/pages/see_your_email.html.erb:8
+msgid "Check your email to continue for reset your password"
+msgstr "Confira seu email para continuar a troca da senha"
+
+#: ../../../app/views/users/pages/welcome.html.erb:13
+msgid "Privacidade"
+msgstr ""
+
+#: ../../../app/views/users/profile_empty.html.erb:6
+msgid "Nicely done!"
+msgstr "Boa!"
+
+#: ../../../app/views/users/profile_empty.html.erb:7
+msgid "You are almost there"
+msgstr "Você está quase lá "
+
+#: ../../../app/views/users/profile_empty.html.erb:8
+msgid "Just two more things 👇"
+msgstr "Só mais duas coisas 👇"
+
+#: ../../../app/views/users/profile_empty.html.erb:20
+msgid "Start"
+msgstr "Iniciar"
