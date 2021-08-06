@@ -12,3 +12,8 @@
  *
  *= require_self
  */
+*= require_self
+*= require bootstrap.min
+*= require fontawesome-all.min
+*= require jquery.scrollbar
+*= require style
