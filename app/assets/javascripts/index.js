@@ -415,6 +415,17 @@ const countrys = [
     "Brazil"
 ];
 
+const markers = [];
+for(let i = 0; i < 100; i++) {
+    markers.push(new google.maps.Marker({
+        position: {lat: 21,lng: 21},
+    }));
+}
+new MarkerClusterer(map, markers, {
+    imagePath:
+      "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+  });
+
 document.querySelector('#search-btn').addEventListener('click', (e) => {
     e.preventDefault();
     if(loading) {
@@ -455,11 +466,6 @@ document.querySelector('#search-btn').addEventListener('click', (e) => {
             }
         })
     });
-    
-    
-    
-        /*             layersGeneric[mapValue[value]].markers.setMap(map);
-                    layersGeneric[mapValue[value]].markers.setPosition(new google.maps.LatLng(element.lat, element.long)); */
 });
 };
 
