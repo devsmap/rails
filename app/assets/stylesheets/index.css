@@ -1,0 +1,49 @@
+.box {
+    max-width: 1100px;
+    text-align: left;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.box-search {
+    max-width: 1100px;
+    text-align: left;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.filter-icon {
+    width: 100px;
+    vertical-align: top;
+    text-align: center;
+    float: none;
+}
+
+.filter-icon p {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.python, .ruby, .csharp {
+    width: 30px;
+}
+
+.react, .php {
+    width: 40px;
+}
+
+.java {
+    width: 25px;
+}
