@@ -57,6 +57,18 @@ ActiveRecord::Schema.define(version: 2021_08_06_175312) do
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
+  create_table "friends", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone"
+    t.string "twitter"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
   create_table "google", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.bigint "state_id", null: false
@@ -112,6 +124,18 @@ ActiveRecord::Schema.define(version: 2021_08_06_175312) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_states_on_country_id"
     t.index ["name"], name: "index_states_on_name", unique: true
+  end
+
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "categories", "categories", column: "parent_id", on_delete: :cascade
