@@ -19,47 +19,103 @@ function initMap() {
     };
 
     var map = new google.maps.Map(mapCanvas, mapOptions);
+    
+    // PINS
+    var markers = [
+        genericos = [
+            {
+                category: "ruby",
+                lat: -9.66583000,
+                long: -35.73528000,
+                total: 6,
+                id: 12939
+            },
+            {
+                category: "ruby",
+                lat: -3.04361000,
+                long: -60.01282000,
+                total: 20,
+                id: 12939
+            },  
+        ],
+        individual = [
+            {
+                category: "ruby",
+                lat: -9.66583000,
+                long: -35.73528000,
+                id: 12939,
+                job: "3d620ad2-a16b-4812-95fb-33a06fe34f5f"
+            },
+            {
+                category: "ruby",
+                lat: -3.04361000,
+                long: -60.01282000,
+                id: 12939,
+                job: "3d620ad2-a16b-4812-95fb-33a06fe34f5f"
+            },  
+        ],
+    ];
+
+    markers_genericos.loop {
+        var marker = new google.maps.Marker({
+            position: [Maceio]],
+            icon: icon: 'ICONE_PIN_GENERICO.png',
+            label: "6",
+            map: map
+        });
+    }
+
+    // PIN INDIVIDUAL
+    var markers_customers = [];  
+    markers_customers.loop {
+        var marker = new google.maps.Marker({
+            position: [ENDERECO DO CLIENTE]],
+            icon: 'ICONE_PIN_INDIVIDUAL.png',
+            map: map
+        });
+    }
+
 
     // var marker = new google.maps.Marker({
     //     position: new google.maps.LatLng(-3.71722000,-38.54306000)
     // });
     // marker.setMap(map);
 
-    var markers = [];    
-    // make random red, yellow, blue markers
-    for (var i = 0; i < 800; i++) {
-        var latLng = new google.maps.LatLng(-3.71 - Math.random(), -38.54 - Math.random());
-        var marker = new google.maps.Marker({
-            position: latLng,
-            icon: 'http://maps.google.com/mapfiles/ms/micons/green.png',
-            label: "" + i,
-            map: map
-        });
-        markers.push(marker);
-    }
+    // var markers = [];    
+    // // make random red, yellow, blue markers
+    // for (var i = 0; i < 800; i++) {
+    //     var latLng = new google.maps.LatLng(-3.71 - Math.random(), -38.54 - Math.random());
+    //     var marker = new google.maps.Marker({
+    //         position: latLng,
+    //         icon: 'http://maps.google.com/mapfiles/ms/micons/green.png',
+    //         label: "" + i,
+    //         map: map
+    //     });
+    //     markers.push(marker);
+    // }
 
-    // define cluster icons
-    var mcOptions = {
-        gridSize: 50,
-        maxZoom: 15,
-        styles: [{
-            height: 50,
-            url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m1.png",
-            width: 50
-        },
-        {
-            height: 50,
-            url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m2.png",
-            width: 50
-        },
-        {
-            height: 50,
-            url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m3.png",
-            width: 50
-        }
-        ]
-    };
-    var markerCluster = new MarkerClusterer(map, markers, mcOptions);
+    // // define cluster icons
+    // var mcOptions = {
+    //     gridSize: 50,
+    //     maxZoom: 15,
+    //     styles: [{
+    //         height: 50,
+    //         url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m1.png",
+    //         width: 50
+    //     },
+    //     {
+    //         height: 50,
+    //         url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m2.png",
+    //         width: 50
+    //     },
+    //     {
+    //         height: 50,
+    //         url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m3.png",
+    //         width: 50
+    //     }
+    //     ]
+    // };
+    // var markerCluster = new MarkerClusterer(map, markers, mcOptions);
    
 
 };
