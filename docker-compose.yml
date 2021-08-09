@@ -21,7 +21,7 @@ services:
     image: postgres
     restart: "no"
     ports:
-      - 5432:5432
+      - 5438:5432
     environment:
       POSTGRES_DB: devsmap_development
       POSTGRES_USER: postgres

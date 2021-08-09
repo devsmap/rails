@@ -1,0 +1,23 @@
+<style type="text/css">    
+    #low     { color: red;     }  
+    #medium  { color: orange;  }  
+    #high    { color: green;   }  
+   </style>    
+
+   <b>Name:</b> <%= name %><br>  
+
+   <% if @staus == 'frio' %>  
+       <b>Status:</b> <span id="low">Frio!</span><br>  
+   <% end %>      
+   <% if @status == 'morno' %>  
+       <b>Status:</b> <span id="medium">Está morno</span><br>  
+   <% end %>      
+   <% if @status == 'quente' %>     
+       <b>Status:</b> <span id="high">Está quente</span><br>       
+   <% end %>  
+   
+   
+   <b>Onsite:</b> <%= @onsite %><br>  
+   <b>Online:</b> <%= @online %><br>  
+
+   <b>Ultima atualização:</b> <%= date %><br><br> 
