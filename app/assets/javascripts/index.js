@@ -129,6 +129,31 @@ function initMap() {
     const existLatLngGeneric = [];
     const existLatLngCostumer = [];
 
+    let markers = [];
+    var mcOptions = {
+        gridSize: 50,
+        maxZoom: 15,
+        styles: [{
+            height: 50,
+            url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/pages/images/m1.png",
+            width: 50
+        },
+        {
+            height: 50,
+            url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/pages/images/m2.png",
+            width: 50
+        },
+        {
+            height: 50,
+            url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/pages/images/m3.png",
+            width: 50
+        }
+        ]
+    };
+
+    var markerCluster = {};
+
+    let previousLayer = '';
     document.querySelectorAll('.filter-icon').forEach((filter) => {
         filter.addEventListener('click', (e) => {
             e.preventDefault();
@@ -137,7 +162,10 @@ function initMap() {
             console.log(center.split(','));
             console.log(`./URL_DUMMY/${filter.textContent.trim()}/${latLngCenter}/${map.getZoom()}`);
             fakeFetch(1).then((response) => {
-                console.log(response);
+                if (previousLayer) {
+                    console.log(previousLayer);
+                    markerCluster[previousLayer].clearMarkers();
+                }
                 if (response.status == 200) {
                     response.body.pin_generic.forEach((value) => {
                         const { lat, long } = value;
@@ -149,9 +177,9 @@ function initMap() {
                                 position: latLng,
                                 icon: 'http://maps.google.com/mapfiles/ms/micons/green.png',
                                 label: `${label}`,
-                                map: map,
                             });
                             marker.addListener('click', callToGeneric.bind('click', lat, long, id));
+                            markers.push(marker);
                         } else {
 
                         }
@@ -165,11 +193,13 @@ function initMap() {
                             const marker = new google.maps.Marker({
                                 position: latLng,
                                 icon: 'http://maps.google.com/mapfiles/ms/micons/green.png',
-                                map: map,
                             });
                             marker.addListener('click', callToJob.bind('click', job));
+                            markers.push(marker);
                         }
                     })
+                    previousLayer = filter.textContent.trim();
+                    markerCluster[previousLayer] = new MarkerClusterer(map, markers, mcOptions);
                 }
             }).then((res) => console.log({ existLatLngGeneric, existLatLngCostumer })).catch((err) => {
                 alert(err);
@@ -217,26 +247,6 @@ function initMap() {
     // }
 
     // // define cluster icons
-    // var mcOptions = {
-    //     gridSize: 50,
-    //     maxZoom: 15,
-    //     styles: [{
-    //         height: 50,
-    //         url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m1.png",
-    //         width: 50
-    //     },
-    //     {
-    //         height: 50,
-    //         url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m2.png",
-    //         width: 50
-    //     },
-    //     {
-    //         height: 50,
-    //         url: "https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m3.png",
-    //         width: 50
-    //     }
-    //     ]
-    // };
     // var markerCluster = new MarkerClusterer(map, markers, mcOptions);
 
 
