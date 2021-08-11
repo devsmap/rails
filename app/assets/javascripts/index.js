@@ -53,6 +53,16 @@ function fakeFetch(value) {
     });
 }
 
+function generateLoader() {
+    return `
+    <div class="loader-wrapper">
+        <span class="loader">
+            <span class="loader-inner"></span>
+        </span>
+    </div>
+    `;
+}
+
 function callToGeneric(lat, long, id) {
     console.log('Chamando as vagas desse pin: Passando, Lat, Long e Id');
     console.log({ lat, long, id });
@@ -163,7 +173,6 @@ function initMap() {
             console.log(`./URL_DUMMY/${filter.textContent.trim()}/${latLngCenter}/${map.getZoom()}`);
             fakeFetch(1).then((response) => {
                 if (previousLayer) {
-                    console.log(previousLayer);
                     markerCluster[previousLayer].clearMarkers();
                 }
                 if (response.status == 200) {
