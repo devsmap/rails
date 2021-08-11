@@ -48,7 +48,10 @@ function fakeFetch(value) {
                 resolve({ status: 200, body: apiResponse });
             }, 2000);
         } else {
-            reject({ status: 503, body: { msg: 'Error no servidor. Tente Novamente' } });
+            setTimeout(() => {
+                reject({ status: 503, body: { msg: 'Error no servidor. Tente Novamente' } });
+
+            }, 2000);
         }
     });
 }
@@ -63,17 +66,61 @@ function generateLoader() {
     `;
 }
 
+function handleLoadingHtmlChange() {
+    document.querySelector('.scroll-wrapper').classList.remove('invisible');
+    const wrapperResults = document.querySelector('#ts-results');
+    wrapperResults.innerHTML = generateLoader() + wrapperResults.innerHTML;
+}
+
+function handleCleanLoading() {
+    const wrapperResults = document.querySelector('#ts-results');
+    const loader = wrapperResults.querySelector('.loader-wrapper')
+    if (!!loader) {
+        wrapperResults.removeChild(loader);
+    }
+}
+
+function appendToTsResults(tsResultsWrapper) {
+    const wrapperResults = document.querySelector('#ts-results');
+    wrapperResults.appendChild(tsResultsWrapper);
+}
+
+function handleErrorHtmlChange(tsResultsWrapper, lat, long, id) {
+    handleCleanLoading();
+    console.log(tsResultsWrapper);
+    tsResultsWrapper.innerHTML = `
+        <div class="loader-wrapper">
+            <div class="error-inner">
+                <span class="error-text">Parece que houve um erro ao carregar, clique no botão para carregar novamente</span>
+                <button button-retry class="btn btn-primary">Carregar Novamente</button>
+            </div>
+        </div>
+    `;
+    appendToTsResults(tsResultsWrapper);
+    document.querySelector("[button-retry]").addEventListener('click', (e) => {
+        e.preventDefault();
+        callToGeneric(lat, long, id);
+    });
+}
+
+function cleanErrorHtml(tsResultsWrapper) {
+    tsResultsWrapper.innerHTML = '';
+}
+
 var previousGeneric = false;
+let tsResultsWrapper = document.querySelector('.ts-results-wrapper');
 function callToGeneric(lat, long, id) {
     console.log('Chamando as vagas desse pin: Passando, Lat, Long e Id');
     console.log({ lat, long, id });
-    const tsResultsWrapper = document.createElement('div');
-    tsResultsWrapper.classList.add('ts-results-wrapper');
-    document.querySelector('.scroll-wrapper').classList.remove('invisible');
-    const wrapperResults = document.querySelector('#ts-results');
+    if (!tsResultsWrapper) {
+        tsResultsWrapper = document.createElement('div');
+        tsResultsWrapper.classList.add('ts-results-wrapper');
+    } else {
+        cleanErrorHtml(tsResultsWrapper);
+    }
     previousGeneric = true;
-    wrapperResults.innerHTML = generateLoader() + wrapperResults.innerHTML;
-    fakeFetch(1).then((response) => {
+    handleLoadingHtmlChange();
+    fakeFetch(0).then((response) => {
         return response;
     }).then(({ body }) => {
         body.pin_generic.forEach((pin) => {
@@ -116,14 +163,15 @@ function callToGeneric(lat, long, id) {
             </a>
           </div>`
         });
+    }).then(() => {
+        appendToTsResults(tsResultsWrapper);
+    }).catch((err) => {
+        console.log(err);
+        handleErrorHtmlChange(tsResultsWrapper, lat, long, id);
+        return err;
     }).finally(() => {
-        const node = wrapperResults.querySelector('.loader-wrapper')
-        wrapperResults.removeChild(node);
-        wrapperResults.appendChild(tsResultsWrapper);
-    })
-    // chamada para a api
-    // Abrir o menu e colocar o loader até que todos os dados sejam carregados
-    // Receber os dados
+        return;
+    });
 }
 
 function callToJob(job) {

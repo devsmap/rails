@@ -91,3 +91,15 @@
     75% { height: 100%;}
     100% { height: 0%;}
   }
+
+  .error-text {
+    font-size: 1.4em;
+    text-align: center;
+  }
+
+  .error-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+  }
