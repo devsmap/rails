@@ -69,16 +69,14 @@
                   </div>
             </section>
             <div class="d-flex h-100">
-<%
-=begin%>
-                 <div class="ts-results__vertical ts-results__vertical-list ts-shadow__sm scrollbar-inner bg-white">
-                    <section id="ts-results">
-                        <div class="ts-results-wrapper"></div>
-                    </section>
-
-                </div> 
-<%
-=end%>
+                <div class="scroll-wrapper ts-results__vertical ts-results__vertical-list ts-shadow__sm scrollbar-inner bg-white" style="position: relative;">
+                    <div class="ts-results__vertical ts-results__vertical-list ts-shadow__sm scrollbar-inner bg-white scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; pointer-events: auto; max-height: 250.792px;">
+                      <section id="ts-results">
+                          <div class="ts-results-wrapper">
+                          </div>
+                      </section>                    
+                    </div>
+                </div>
                 
                 <div class="ts-map w-100" id="map">
                     <div id="ts-map-hero" class="h-100"
