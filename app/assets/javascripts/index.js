@@ -63,9 +63,67 @@ function generateLoader() {
     `;
 }
 
+var previousGeneric = false;
 function callToGeneric(lat, long, id) {
     console.log('Chamando as vagas desse pin: Passando, Lat, Long e Id');
     console.log({ lat, long, id });
+    const tsResultsWrapper = document.createElement('div');
+    tsResultsWrapper.classList.add('ts-results-wrapper');
+    document.querySelector('.scroll-wrapper').classList.remove('invisible');
+    const wrapperResults = document.querySelector('#ts-results');
+    previousGeneric = true;
+    wrapperResults.innerHTML = generateLoader() + wrapperResults.innerHTML;
+    fakeFetch(1).then((response) => {
+        return response;
+    }).then(({ body }) => {
+        body.pin_generic.forEach((pin) => {
+            tsResultsWrapper.innerHTML = tsResultsWrapper.innerHTML + `<div class="ts-result-link" data-ts-id="16" data-ts-ln="15">
+            <span class="ts-center-marker">
+              <img src="assets/img/result-center.svg">
+            </span>
+            <a href="detail-01.html" class="card ts-item ts-card ts-result">
+              <div class="ts-ribbon"><i class="fa fa-thumbs-up"></i></div>
+              <div href="detail-01.html" class="card-img ts-item__image"
+                style="background-image: url(assets/img/img-item-thumb-16.jpg)"></div>
+              <div class="card-body">
+                <div class="ts-item__info-badge">$185,900</div>
+                <figure class="ts-item__info">
+                  <h4>Residental House on Quite Place</h4>
+                  <aside><i class="fa fa-map-marker mr-2"></i>605 Dennett Place, Tooleville</aside>
+                </figure>
+                <div class="ts-description-lists">
+                  <dl>
+                    <dt>Area</dt>
+                    <dd>356m<sup>2</sup></dd>
+                  </dl>
+                  <dl>
+                    <dt>Bedrooms</dt>
+                    <dd>2</dd>
+                  </dl>
+                  <dl>
+                    <dt>Bathrooms</dt>
+                    <dd>1</dd>
+                  </dl>
+                  <dl>
+                    <dt>Rooms</dt>
+                    <dd>1</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="card-footer">
+                <span class="ts-btn-arrow">Detail</span>
+              </div>
+            </a>
+          </div>`
+        });
+    }).finally(() => {
+        const node = wrapperResults.querySelector('.loader-wrapper')
+        wrapperResults.removeChild(node);
+        wrapperResults.appendChild(tsResultsWrapper);
+    })
+    // chamada para a api
+    // Abrir o menu e colocar o loader até que todos os dados sejam carregados
+    // Receber os dados
 }
 
 function callToJob(job) {
@@ -101,6 +159,10 @@ function initMap() {
         const sw = bounds.getSouthWest();
         latLngCenter = (new google.maps.LatLngBounds(sw, ne)).getCenter();
     });
+    map.addListener('click', () => {
+        document.querySelector('.scroll-wrapper').classList.add('invisible');
+        document.querySelector('#ts-results').innerHTML = '';
+    })
     // PINS
     /* var markers = [
         genericos = [
@@ -167,6 +229,10 @@ function initMap() {
     document.querySelectorAll('.filter-icon').forEach((filter) => {
         filter.addEventListener('click', (e) => {
             e.preventDefault();
+            if (previousGeneric) {
+                document.querySelector('.scroll-wrapper').classList.add('invisible');
+                document.querySelector('#ts-results').innerHTML = '';
+            }
             const center = `${latLngCenter}`;
             console.log(map.getZoom());
             console.log(center.split(','));

@@ -1,3 +1,7 @@
+.invisible {
+    display: none;
+}
+
 .box {
     max-width: 1100px;
     text-align: left;
