@@ -57,6 +57,29 @@ ActiveRecord::Schema.define(version: 2021_08_06_175312) do
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
+  create_table "employees", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "name", null: false
+    t.text "email", null: false
+    t.integer "role", default: 0, null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.text "current_sign_in_ip"
+    t.text "last_sign_in_ip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["confirmation_token"], name: "index_employees_on_confirmation_token", unique: true
+    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
   create_table "google", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.bigint "state_id", null: false

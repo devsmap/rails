@@ -1,33 +1,56 @@
 version: '3.8'
 
 services:
-  web:
-    build: .
+  app:
     environment:
+      - RAILS_ENV=development 
       - DATABASE_URL=postgresql://postgres:password@postgresql:5432/devsmap?encoding=utf8&pool=5&timeout=5000
       - AIRBRAKE_PROJECT_ID=311097
       - AIRBRAKE_API_KEY=7db5cef6f2e6cc3c6349d7f358fae4ba
-      - RAILS_MAX_THREAD=1
-      - PORT=3000
-      - RAILS_ENV=development
-    ports:
-      - 3000:3000
+      - RAILS_MAX_THREAD=1    
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    command: bash -c "bundle exec puma -C config/puma.rb"
+    volumes:
+      - .:/app
     depends_on:
       - postgresql
-    volumes:
-      - '.:/app'            
+      - mailcatcher 
 
   postgresql:
+    environment:
+      POSTGRES_DB: devsmap_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password  
     image: postgres
     restart: "no"
     ports:
       - 5438:5432
-    environment:
-      POSTGRES_DB: devsmap_development
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
     volumes:
-      - postgresdb:/var/lib/postgresql/data/            
+      - postgresdb:/var/lib/postgresql/data/    
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    depends_on:
+      - app
+    ports:
+      - 80:80
+
+  mailcatcher:
+    image: yappabe/mailcatcher
+    ports:
+      - 1025:1025
+      - 1080:1080            
+
+  start_dependencies:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - postgresql
+      - nginx
+    command: postgresql:5432 mailcatcher:1080 nginx:80               
 
 volumes:
   postgresdb:
