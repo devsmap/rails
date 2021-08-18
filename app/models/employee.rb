@@ -26,17 +26,15 @@ class Employee < ActiveRecord::Base
          :trackable,
          :validatable,
          :confirmable
-        #  ,
-        #  :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
-  def update_without_password(params, *options)
-    if params[:password].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation) if params[:password_confirmation].blank?
-    end
+  # def update_without_password(params, *options)
+  #   if params[:password].blank?
+  #     params.delete(:password)
+  #     params.delete(:password_confirmation) if params[:password_confirmation].blank?
+  #   end
     
-    clean_up_passwords
-    update(params, *options)
-  end  
+  #   clean_up_passwords
+  #   update(params, *options)
+  # end  
 
 end

@@ -20,7 +20,6 @@ gem 'airbrake'
 # Backend
 gem 'http_accept_language'
 gem "bullet"
-gem 'omniauth', '1.9.1'
 gem 'devise'
 gem 'simple_form'
 gem 'sixarm_ruby_unaccent'

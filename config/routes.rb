@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   # routes to subdomain
   # core.devsmap.com
   # ============================================================================
-  draw :core
+  draw :employee
 
   # devsmap.com
   # ============================================================================
-  get '/', to: 'pages#welcome', as: :root_user 
+  # get '/', to: 'pages#welcome', as: :root_user 
 
   # Exceptions
   # ============================================================================
