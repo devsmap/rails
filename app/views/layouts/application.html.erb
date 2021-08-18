@@ -1,105 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <title>HelloApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="devsmap.com">
-
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-
-  <title>MyHouse - Advanced Real Estate HTML Template by ThemeStarz</title>
-</head>
-
-<body>
-
-<div class="ts-page-wrapper ts-homepage ts-full-screen-page" id="page-top">
-    <section id="ts-hero" class=" mb-0">
-
-        <div class="ts-full-screen d-flex flex-column">
-            <section class="ts-shadow__sm ts-z-index__2 ts-bg-light">
-                  <div class="box">
-                    <div class="logo-wrapper">
-                      <a class="navbar-brand" href="index-map-leaflet-fullscreen.html">
-                        <img src="<%= asset_path('logo.svg') %>" alt="Logo Devsmap">
-                      </a>
-                    </div>
-                    <a href="/add" class="btn btn-primary">Adicionar vaga</a>
-                  </div>
-                  <div class="box-search">
-                    <a class="filter-icon" href="#">
-                      <p>
-                        <img class="react" src="<%= asset_path('react.png') %>">
-                        React
-                      </p>
-                    </a>
-                    <a class="filter-icon" href="#">
-                      <p>
-                        <img class="java" src="<%= asset_path('java.png') %>">
-                        Java
-                      </p>
-                    </a>
-                    <a class="filter-icon" href="#">
-                      <p>
-                        <img class="python" src="<%= asset_path('python.png') %>">
-                        Python
-                      </p>
-                    </a>
-                    <a class="filter-icon" href="#">
-                      <p>
-                        <img class="ruby" src="<%= asset_path('ruby.jpg') %>">
-                        Ruby
-                      </p>
-                    </a>
-                    <a class="filter-icon" href="#">
-                      <p>
-                        <img class="php" src="<%= asset_path('php.jpg') %>">
-                        PHP
-                      </p>
-                    </a>
-                    <a class="filter-icon" href="#">
-                      <p>
-                        <img class="csharp" src="<%= asset_path('csharp.png') %>">
-                        C#
-                      </p>
-                    </a>
-                  </div>
-            </section>
-            <div class="d-flex h-100">
-                <div class="invisible scroll-wrapper ts-results__vertical ts-results__vertical-list ts-shadow__sm scrollbar-inner bg-white" style="position: relative;">
-                    <div class="ts-results__vertical ts-results__vertical-list ts-shadow__sm scrollbar-inner bg-white scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; pointer-events: auto;">
-                      <section id="ts-results">
-                      </section>                    
-                    </div>
-                </div>
-                
-                <div class="ts-map w-100" id="map">
-                    <div id="ts-map-hero" class="h-100"
-                        data-ts-map-zoom="13"
-                        data-ts-map-center-latitude="40.702411"
-                        data-ts-map-center-longitude="-73.556842"
-                        data-ts-google-map-style='[{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e9e9e9"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#deebd8"},{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#c4e5f3"},{"visibility":"on"}]}]'
-                        data-ts-locale="en-US"
-                        data-ts-currency="USD"
-                        data-ts-unit="m<sup>2</sup>"
-                        data-ts-display-additional-info="area_Area;bedrooms_Bedrooms;bathrooms_Bathrooms;rooms_Rooms"
-                    >
-                    </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </section>
-
-</div>
-
-  <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
-  <script async  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEfMilvAYXbiy8uYvmhggUrgDJAAzqzvY&callback=initMap"></script>
-
-</body>
+  <body>
+    <%= yield %>
+  </body>
 </html>

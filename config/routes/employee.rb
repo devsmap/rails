@@ -1,9 +1,11 @@
-devise_for :employees, :controllers => {
-  sessions:      "employees/devise/sessions",
-  registrations: "employees/devise/registrations",
-  confirmations: "employees/devise/confirmations",
-  passwords:     "employees/devise/passwords"
-}
+devise_for :employees
+
+# devise_for :employees, :controllers => {
+#   sessions:      "employees/devise/sessions",
+#   registrations: "employees/devise/registrations",
+#   confirmations: "employees/devise/confirmations",
+#   passwords:     "employees/devise/passwords"
+# }
 
 # as :employee do
 #   patch '/employees/confirmation' => 'employees/devise/confirmations#update',

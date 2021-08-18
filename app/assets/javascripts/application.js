@@ -13,13 +13,5 @@
 
 //= require jquery
 //= require jquery_ujs
-//=require index
-//require custom
-//require dragscroll
-//require infobox
-//require jquery-3.3.1.min
-//require jquery.scrollbar.min
-//require markerclusterer_packed
-//require owl.carousel.min
-//require popper.min
+
 

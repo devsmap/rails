@@ -11,9 +11,4 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap
- *= require fontawesome-all.min
- *= require jquery.scrollbar
- *= require style
- *= require index
  */
