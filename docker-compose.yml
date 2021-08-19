@@ -11,7 +11,8 @@ services:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
-    command: bash -c "bundle exec puma -C config/puma.rb"
+    ports:
+        - 3000:3000    
     volumes:
       - .:/app
     depends_on:
@@ -30,27 +31,12 @@ services:
     volumes:
       - postgresdb:/var/lib/postgresql/data/    
 
-  nginx:
-    build:
-      context: .
-      dockerfile: ./docker/nginx/Dockerfile
-    depends_on:
-      - app
-    ports:
-      - 80:80
 
   mailcatcher:
     image: yappabe/mailcatcher
     ports:
       - 1025:1025
       - 1080:1080            
-
-  start_dependencies:
-    image: dadarek/wait-for-dependencies
-    depends_on:
-      - postgresql
-      - nginx
-    command: postgresql:5432 mailcatcher:1080 nginx:80               
 
 volumes:
   postgresdb:

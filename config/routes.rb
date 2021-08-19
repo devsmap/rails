@@ -6,7 +6,7 @@ end
 
 Rails.application.routes.draw do
   if Rails.env.development? || Rails.env.test?
-    default_url_options host: "devsmap.local"
+    default_url_options host: "localhost"
   elsif Rails.env.production? || Rails.env.staging?
     default_url_options host: "devsmap.com"
   end
