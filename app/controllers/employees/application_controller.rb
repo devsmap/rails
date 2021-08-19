@@ -1,3 +1,3 @@
-class Employees::ApplicationController < ActionController::Base  
+class Employees::ApplicationController < ApplicationController
   
 end

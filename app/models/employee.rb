@@ -19,13 +19,11 @@ class Employee < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # https://github.com/heartcombo/devise  
   ##############################################################################  
-  devise :database_authenticatable,
-         :registerable,
-         :recoverable,
-         :rememberable,
-         :trackable,
-         :validatable,
-         :confirmable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :trackable
 
   # def update_without_password(params, *options)
   #   if params[:password].blank?

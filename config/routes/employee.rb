@@ -1,12 +1,5 @@
 devise_for :employees
 
-# devise_for :employees, :controllers => {
-#   sessions:      "employees/devise/sessions",
-#   registrations: "employees/devise/registrations",
-#   confirmations: "employees/devise/confirmations",
-#   passwords:     "employees/devise/passwords"
-# }
-
 # as :employee do
 #   patch '/employees/confirmation' => 'employees/devise/confirmations#update',
 #         via: :patch,
@@ -19,31 +12,24 @@ devise_for :employees
 #   end
 # end
 
-# namespace :employees do
+namespace :employees do
 
-#   # Solutions
-#   namespace :helpers do
-#     get  '/',                           action: 'index'
-#     get  '/not-received-email-welcome', action: 'email_welcome',  as: :email_welcome
-#     post '/not-received-email-welcome', action: 'resend_welcome', as: :resend_welcome
-#   end
+  # Dashbord
+  get '/' => 'dashboard#index', as: :dashboard
 
-#   # Dashbord
-#   get '/' => 'dashboard#index', as: :dashboard
+  # Employees
+  resources :employees do
+    member do
+      get :resend_confirmation
+    end
+  end
 
-#   # Employees
-#   resources :employees do
-#     member do
-#       get :resend_confirmation
-#     end
-#   end
+  # # Companies
+  # resources :companies, except: [:show, :destroy] do
+  #   member do
+  #     get '/tab/:tab', action: :show, as: :show,
+  #                      tab: /users/
+  #   end
+  # end
 
-#   # Companies
-#   resources :companies, except: [:show, :destroy] do
-#     member do
-#       get '/tab/:tab', action: :show, as: :show,
-#                        tab: /users/
-#     end
-#   end
-
-# end
+end
