@@ -28,7 +28,9 @@
           </span>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-            <a class="dropdown-item" href="page-auth-login-v2.html"><i class="me-50" data-feather="power"></i> Sair</a>
+            <%= link_to(destroy_employee_session_path, method: :delete, class: "dropdown-item") do %>
+              <i class="me-50" data-feather="power"></i> Sair
+            <% end %>
           </div>
       </li>
     </ul>
