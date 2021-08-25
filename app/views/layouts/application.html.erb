@@ -1,14 +1,58 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <title>devsmap.com</title>
+    <link rel="shortcut icon" type="image/x-icon" href="<%= asset_path('ico/favicon.ico') %>">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
 
-  <body>
+    <!-- BEGIN: CSS-->
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <!-- END: CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="horizontal-layout horizontal-menu  navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="">
+
+    <!-- BEGIN: Header-->
+    <%= render 'layouts/shared/header' %>
+    <!-- END: Header-->
+
+    <!-- BEGIN: Main Menu-->
+    <%= render 'layouts/shared/menu' %>
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
     <%= yield %>
-  </body>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <%= javascript_include_tag "application-dashbord" %>
+
+    <script>
+      $(window).on('load', function() {
+        if (feather) {
+          feather.replace({
+            width: 14,
+            height: 14
+          });
+        }
+      })
+    </script>    
+
+</body>
+<!-- END: Body-->
+
 </html>

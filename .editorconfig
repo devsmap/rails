@@ -5,6 +5,6 @@ end_of_line = lf
 insert_final_newline = true
 
 # 2 space indentation
-[*.{rb,yml,html.erb}]
+[*.{rb,yml,html.erb,.erb}]
 indent_style = space
 indent_size = 2

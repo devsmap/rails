@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
         
     def resolve_layout
       if signed_in?
-        "employee" if current_user.is_a?(Employee)
+        "application.html"
       else
         "login"
       end

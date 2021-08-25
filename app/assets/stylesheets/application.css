@@ -11,5 +11,19 @@
  * It is generally better to create a new file per style scope.
  *
  *= require vendors
- *= require_tree
+ *= require charts/apexcharts
+ *= require extensions/toastr.min
+ *= require bootstrap
+ *= require bootstrap-extended
+ *= require colors
+ *= require components
+ *= require themes/bordered-layout
+ *= require themes/dark-layout
+ *= require core/menu/menu-types/horizontal-menu
+ *= require plugins/forms/form-validation
+ *= require plugins/forms/form-validation
+ *= require pages/page-auth
+ *= require pages/dashboard      
+ *= require plugins/charts/chart-apex
+ *= require plugins/extensions/ext-component-toastr
  */

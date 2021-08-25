@@ -1,0 +1,23 @@
+<% if notice.present? %>
+
+  <div class="demo-spacing-0">
+    <div class="alert alert-primary mt-1 alert-validation-msg" role="alert">
+      <div class="alert-body d-flex align-items-center">
+        <span><%= notice %></span>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+<% if alert.present? %>
+
+  <div class="demo-spacing-0">
+    <div class="alert alert-danger mt-1 alert-validation-msg" role="alert">
+      <div class="alert-body d-flex align-items-center">
+        <span><%= alert %></span>
+      </div>
+    </div>
+  </div>
+
+<% end %>
