@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base  
 
   before_action :set_cache_headers
-  before_action :set_locale
 
   layout :resolve_layout
 

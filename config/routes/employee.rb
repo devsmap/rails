@@ -24,12 +24,20 @@ namespace :employees do
     end
   end
 
-  # # Companies
-  # resources :companies, except: [:show, :destroy] do
-  #   member do
-  #     get '/tab/:tab', action: :show, as: :show,
-  #                      tab: /users/
-  #   end
-  # end
+  # Companies
+  resources :companies, only: [:index] do
+    # member do
+    #   get '/tab/:tab', action: :show, as: :show,
+    #                    tab: /users/
+    # end
+  end
+
+  # Jobs
+  resources :jobs, only: [:index] do
+    # member do
+    #   get '/tab/:tab', action: :show, as: :show,
+    #                    tab: /users/
+    # end
+  end
 
 end

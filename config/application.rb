@@ -17,7 +17,7 @@ module DockerRails
     # the framework and any gems in your application.
     config.assets.enabled = true    
 
-    config.i18n.default_locale = :"pt-br"
+    config.i18n.default_locale = :"pt-BR"
 
     config.time_zone = "Brasilia"
     config.active_record.default_timezone = :local    
