@@ -21,7 +21,6 @@ gem 'airbrake'
 gem 'http_accept_language'
 gem "bullet"
 gem 'devise'
-gem 'simple_form'
 gem 'sixarm_ruby_unaccent'
 gem "validate_url"
 gem 'translation'
