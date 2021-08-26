@@ -12,7 +12,6 @@ WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 
-RUN bundle lock --add-platform x86_64-linux
 RUN bundle install
 
 COPY . /app
