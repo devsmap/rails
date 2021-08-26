@@ -10,6 +10,6 @@
 # Add Yarn node_modules folder to the asset load path.
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "images")
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
-Rails.application.config.assets.precompile << %w( application-dashboard.js )
+Rails.application.config.assets.precompile << %w( application-login.js application-dashboard.js )
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
