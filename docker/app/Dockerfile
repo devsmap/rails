@@ -3,7 +3,7 @@ FROM ruby:3.0.1
 # Install node 14-LTS
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get update -qq && apt-get install -qq --no-install-recommends \
-    nodejs \
+    nodejs vim \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 

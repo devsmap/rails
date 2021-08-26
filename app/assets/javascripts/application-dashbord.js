@@ -14,6 +14,7 @@
 //= require vendors
 //= require ui/jquery.sticky
 //= require forms/validation/jquery.validate.min
+//= require forms/validation/messages_pt_BR.js
 //= require charts/apexcharts
 //= require extensions/toastr.min
 //= require core/app-menu
