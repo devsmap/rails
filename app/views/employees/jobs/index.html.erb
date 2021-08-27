@@ -24,43 +24,39 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                        
-                          <div class="d-flex align-items-center">
-                            <div class="avatar bg-light-primary me-1">
-                              <div class="avatar-content">
-                                <i data-feather="monitor" class="font-medium-3"></i>
+                      <% @jobs.each do |job| %>
+                        <tr>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div class="avatar bg-light-primary me-1">
+                                <div class="avatar-content">
+                                  <i data-feather="terminal" class="font-medium-3"></i>
+                                </div>
+                              </div>
+                              <span><%= job.category.name %></span>
+                            </div>
+                          </td>
+                          <td><%= job.company %></td>
+                          <td><%= job.title %></td>
+                          <td>
+                            <div class="dropdown">
+                              <button type="button" class="btn btn-sm dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <i data-feather="more-vertical"></i>
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">
+                                  <i data-feather="edit-2" class="me-50"></i>
+                                  <span>Edit</span>
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                  <i data-feather="trash" class="me-50"></i>
+                                  <span>Delete</span>
+                                </a>
                               </div>
                             </div>
-                            <span>Technology</span>
-                          </div>
-                        </td>
-                        <td class="text-nowrap">
-                          <div class="d-flex flex-column">
-                            <span class="fw-bolder mb-25">23.4k</span>
-                            <span class="font-small-2 text-muted">in 24 hours</span>
-                          </div>
-                        </td>
-                        <td>$891.2</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i data-feather="more-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">
-                                <i data-feather="edit-2" class="me-50"></i>
-                                <span>Edit</span>
-                              </a>
-                              <a class="dropdown-item" href="#">
-                                <i data-feather="trash" class="me-50"></i>
-                                <span>Delete</span>
-                              </a>
-                            </div>
-                          </div>
-                        </td>                        
-                      </tr>
+                          </td>                        
+                        </tr>
+                      <% end %>
                     </tbody>
                   </table>
                 </div>

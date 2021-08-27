@@ -26,4 +26,5 @@
  *= require pages/dashboard      
  *= require plugins/charts/chart-apex
  *= require plugins/extensions/ext-component-toastr
+ *= require style
  */
