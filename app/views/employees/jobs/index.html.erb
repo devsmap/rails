@@ -17,9 +17,9 @@
                   <table class="table table-striped table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Local</th>
                         <th>Tecnologia</th>
                         <th>Empresa</th>
+                        <th>Local</th>
                         <th>Titulo</th>
                         <th>Publicação</th>
                         <th>Ações</th>
@@ -28,9 +28,9 @@
                     <tbody>
                       <% @jobs.each do |job| %>
                         <tr>
-                          <td><%= "#{job.city.name}/#{job.city.state.state_code}" %></td>
                           <td><%= job.category.name %></td>
                           <td><%= job.company %></td>
+                          <td><%= "#{job.city.name}/#{job.city.state.state_code}" %></td>
                           <td><%= job.title %></td>
                           <td><%= time_ago_in_words(job.published_at) %> atrás</td>
                           <td>
