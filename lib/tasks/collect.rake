@@ -10,6 +10,8 @@ namespace :google do
           end
         end
       end
+
+      Rake::Task["google:jobs:detail"].invoke
     end
   end
 end
