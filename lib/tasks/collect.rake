@@ -22,7 +22,6 @@ def collect(country, state, category)
   jobs_by_requests = nil
 
   loop do
-
     url = build_url(category, state, country, scrape_erro, try_change_date)
     response = HTTParty.get('http://api.scrapeup.com/?api_key=' + 'e39ba39678937b20bc8006d3aaa7e451' + '&url=' + CGI.escape(url))
     puts "#{url}".blue + " (#{response.code})".white  
@@ -80,6 +79,9 @@ def work_html(html, category, state)
     description  = block.search('span[style="line-height:1.5em"]//text()').to_s.squeeze(' ')
     link         = block.xpath("div/div[#{ordem_div}]/div[1]/div/div/g-scrolling-carousel/div/div/div/span/a/@href").to_s
     token        = Base64.encode64(title+company+city).gsub("\n", ' ').strip
+
+    # Se a vaga já foi cadastrada pula o loop
+    next if Google.exists?(job_id: "#{job_id}")
 
     regex_category_name =  category.name
     regex_category_name += category.childrens.exists? ? "|" + category.childrens.pluck(:name).join("|") : ""
