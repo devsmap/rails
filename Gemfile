@@ -29,6 +29,7 @@ gem 'colorize'
 gem 'httparty'
 gem 'acts_as_paranoid'
 gem "enumerize"
+gem 'postmark-rails'
 
 # Frontend
 gem 'sass-rails', '~> 5.0'
