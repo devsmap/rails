@@ -81,7 +81,7 @@ def work_html(html, category, state)
     token        = Base64.encode64(title+company+city).gsub("\n", ' ').strip
 
     # Se a vaga já foi cadastrada pula o loop
-    next if Google.exists?(job_id: "#{job_id}")
+    next if Google.with_deleted.exists?(job_id: "#{job_id}")
 
     regex_category_name =  category.name
     regex_category_name += category.childrens.exists? ? "|" + category.childrens.pluck(:name).join("|") : ""
@@ -117,7 +117,7 @@ end
 
 def save_jobs(country, state, category, collect)
   collect.each do |job|
-    unless Google.exists?(job_id: "#{job[:job_id]}")
+    unless Google.with_deleted.exists?(job_id: "#{job[:job_id]}")
       Google.create(
         category_id: category.id,
         state_id: state.id,
