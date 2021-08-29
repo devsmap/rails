@@ -13,6 +13,10 @@
  *= require vendors
  *= require charts/apexcharts
  *= require extensions/toastr.min
+ *= require tables/datatable/dataTables.bootstrap5.min
+ *= require tables/datatable/responsive.bootstrap4.min
+ *= require tables/datatable/buttons.bootstrap5.min
+ *= require tables/datatable/rowGroup.bootstrap4.min 
  *= require bootstrap
  *= require bootstrap-extended
  *= require colors

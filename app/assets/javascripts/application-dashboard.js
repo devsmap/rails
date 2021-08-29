@@ -17,9 +17,21 @@
 //= require forms/validation/messages_pt_BR.js
 //= require charts/apexcharts
 //= require extensions/toastr.min
+//= require tables/datatable/jquery.dataTables.min
+//= require tables/datatable/dataTables.bootstrap5.min
+//= require tables/datatable/dataTables.responsive.min
+//= require tables/datatable/responsive.bootstrap4.min
+//= require tables/datatable/datatables.checkboxes.min
+//= require tables/datatable/datatables.buttons.min
+//= require tables/datatable/jszip.min
+//= require tables/datatable/pdfmake.min
+//= require tables/datatable/vfs_fonts
+//= require tables/datatable/buttons.html5.min
+//= require tables/datatable/buttons.print.min
+//= require tables/datatable/dataTables.rowGroup.min
 //= require core/app-menu
 //= require core/app
 //= require scripts/pages/dashboard
-//= require_tree
+//= require scripts/tables/table-datatables-jobs
 
 

@@ -30,6 +30,7 @@ gem 'httparty'
 gem 'acts_as_paranoid'
 gem "enumerize"
 gem 'postmark-rails'
+gem 'ajax-datatables-rails'
 
 # Frontend
 gem 'sass-rails', '~> 5.0'

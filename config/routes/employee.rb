@@ -33,11 +33,13 @@ namespace :employees do
   end
 
   # Jobs
-  resources :jobs, only: [:index] do
-    # member do
-    #   get '/tab/:tab', action: :show, as: :show,
-    #                    tab: /users/
-    # end
-  end
+  get '/jobs'      => 'jobs#index'
+  get '/jobs/ajax' => 'jobs#ajax'
+  # resources :jobs, only: [:index] do
+  #   # member do
+  #   #   get '/tab/:tab', action: :show, as: :show,
+  #   #                    tab: /users/
+  #   # end
+  # end
 
 end

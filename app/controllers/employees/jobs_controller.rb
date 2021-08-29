@@ -1,7 +1,10 @@
 class Employees::JobsController < Employees::ApplicationController
 
   def index
-    @jobs = Job.all.order(published_at: :desc) 
+    respond_to do |format|
+      format.html
+      format.json { render json: JobDatatable.new(params) }
+    end
   end
   
 end
