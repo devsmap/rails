@@ -25,7 +25,7 @@ namespace :employees do
   end
 
   # Companies
-  resources :companies, only: [:index] do
+  resources :companies, only: [:index, :edit] do
     # member do
     #   get '/tab/:tab', action: :show, as: :show,
     #                    tab: /users/
@@ -33,13 +33,11 @@ namespace :employees do
   end
 
   # Jobs
-  get '/jobs'      => 'jobs#index'
-  get '/jobs/ajax' => 'jobs#ajax'
-  # resources :jobs, only: [:index] do
-  #   # member do
-  #   #   get '/tab/:tab', action: :show, as: :show,
-  #   #                    tab: /users/
-  #   # end
-  # end
+  resources :jobs, only: [:index, :edit] do
+    # member do
+    #   get '/tab/:tab', action: :show, as: :show,
+    #                    tab: /users/
+    # end
+  end
 
 end

@@ -17,6 +17,7 @@
 //= require forms/validation/messages_pt_BR.js
 //= require charts/apexcharts
 //= require extensions/toastr.min
+//= require forms/select/select2.full.min.js
 //= require tables/datatable/jquery.dataTables.min
 //= require tables/datatable/dataTables.bootstrap5.min
 //= require tables/datatable/dataTables.responsive.min
@@ -31,6 +32,7 @@
 //= require tables/datatable/dataTables.rowGroup.min
 //= require core/app-menu
 //= require core/app
+//= require scripts/forms/form-select2.js
 //= require scripts/pages/dashboard
 //= require scripts/tables/table-datatables-jobs
 

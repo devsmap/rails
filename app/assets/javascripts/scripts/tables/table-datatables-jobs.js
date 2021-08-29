@@ -42,8 +42,8 @@ $(function () {
           searchable: false,
           render: function (data, type, full, meta) {
             return (
-              '<a href="javascript:;" class="item-edit">' +
-                feather.icons['edit'].toSvg({ class: 'font-small-4' }) +
+              '<a href="/employees/jobs/'+full["id"]+'/edit" class="item-edit">' +
+                feather.icons['edit'].toSvg({ class: 'font-small-4' }) + 
               '</a>'
             );
           }
@@ -57,7 +57,7 @@ $(function () {
         {
           extend: 'collection',
           className: 'btn btn-outline-secondary dropdown-toggle me-2',
-          text: feather.icons['share'].toSvg({ class: 'font-small-4 me-50' }) + 'Export',
+          text: feather.icons['share'].toSvg({ class: 'font-small-4 me-50' }) + 'Exportar',
           buttons: [
             {
               extend: 'print',
