@@ -1,6 +1,5 @@
 class Employees::ApplicationController < ApplicationController
-  include Pagy::Backend
-  
+
   before_action :authenticate_employee!
 
   private
