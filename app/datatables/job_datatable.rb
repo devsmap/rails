@@ -30,7 +30,6 @@ class JobDatatable < AjaxDatatablesRails::ActiveRecord
 
   def get_raw_records
     Job.all
-    # .order(published_at: :desc) 
   end
 
 end
