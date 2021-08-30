@@ -20,7 +20,6 @@ class Employees::JobsController < Employees::ApplicationController
     end
   end
 
-
   private
 
     def set_job
@@ -28,7 +27,7 @@ class Employees::JobsController < Employees::ApplicationController
     end
 
     def job_params
-      params.require(:job).permit(:category_id, :title, :company, :city_id, :link, :description)
+      params.require(:job).permit(:category_id, :title, :company_id, :city_id, :link, :description)
     end
 
 end

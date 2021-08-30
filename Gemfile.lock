@@ -108,6 +108,8 @@ GEM
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.3)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     gems (1.2.0)
     gemsurance (0.10.0)
       bundler (>= 1.2, < 3.0)
@@ -273,6 +275,7 @@ DEPENDENCIES
   devise
   enumerize
   faker (~> 2.14)
+  friendly_id (~> 5.4.0)
   gemsurance
   http_accept_language
   httparty

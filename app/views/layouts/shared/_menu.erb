@@ -16,17 +16,17 @@
     <!-- Horizontal menu content-->
     <div class="navbar-container main-menu-content" data-menu="menu-container">
       <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class="nav-item active">
-          <a class="nav-link d-flex align-items-center" href="index.html">
+        <li class="nav-item <%=  params[:controller] =='employees/dashboard' ? "active" : ""%> ">
+          <a class="nav-link d-flex align-items-center" href="<%= employees_dashboard_path %>">
             <i data-feather="pie-chart"></i><span data-i18n="Dashboard">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%=  params[:controller] == 'employees/companies' ? "active" : ""%> ">
           <a class="nav-link d-flex align-items-center" href="<%= employees_companies_path %>">
             <i data-feather="globe"></i><span data-i18n="Empresas">Empresas</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%= params[:controller] == 'employees/jobs' ? "active" : ""%> ">
           <a class="nav-link d-flex align-items-center" href="<%= employees_jobs_path %>">
             <i data-feather="map-pin"></i><span data-i18n="Vagas">Vagas</span>
           </a>
@@ -35,3 +35,5 @@
     </div>
   </div>
 </div>
+
+

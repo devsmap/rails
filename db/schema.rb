@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 2021_08_06_175312) do
     t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
+  create_table "companies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.boolean "is_customer", default: false
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["slug"], name: "index_companies_on_slug", unique: true
+  end
+
   create_table "countries", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "is_active", default: false
@@ -104,10 +114,10 @@ ActiveRecord::Schema.define(version: 2021_08_06_175312) do
 
   create_table "jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "category_id", null: false
+    t.uuid "company_id", null: false
     t.bigint "city_id", null: false
     t.boolean "is_active", default: false
     t.string "title"
-    t.string "company"
     t.text "description"
     t.string "via"
     t.string "link"
@@ -120,6 +130,7 @@ ActiveRecord::Schema.define(version: 2021_08_06_175312) do
     t.string "deleted_reason"
     t.index ["category_id"], name: "index_jobs_on_category_id"
     t.index ["city_id"], name: "index_jobs_on_city_id"
+    t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["gogole_job_id"], name: "index_jobs_on_gogole_job_id", unique: true
   end
 
@@ -143,5 +154,6 @@ ActiveRecord::Schema.define(version: 2021_08_06_175312) do
   add_foreign_key "google", "states"
   add_foreign_key "jobs", "categories"
   add_foreign_key "jobs", "cities"
+  add_foreign_key "jobs", "companies"
   add_foreign_key "states", "countries"
 end

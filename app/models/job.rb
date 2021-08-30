@@ -6,5 +6,6 @@ class Job < ApplicationRecord
   local_date_attr_reader :published_at 
 
   belongs_to :category
+  belongs_to :company
   belongs_to :city
 end

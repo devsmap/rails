@@ -31,6 +31,7 @@ gem 'acts_as_paranoid'
 gem "enumerize"
 gem 'postmark-rails'
 gem 'ajax-datatables-rails'
+gem 'friendly_id', '~> 5.4.0'
 
 # Frontend
 gem 'sass-rails', '~> 5.0'
