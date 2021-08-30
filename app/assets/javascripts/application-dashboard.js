@@ -35,5 +35,6 @@
 //= require scripts/forms/form-select2.js
 //= require scripts/pages/dashboard
 //= require scripts/tables/table-datatables-jobs
+//= require scripts/tables/table-datatables-companies
 
 
