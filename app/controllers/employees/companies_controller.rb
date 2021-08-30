@@ -13,8 +13,8 @@ class Employees::CompaniesController < Employees::ApplicationController
   end
 
   def update
-    if @job.update(job_params)
-      redirect_to employees_jobs_path, notice: "Sucesso"
+    if @company.update(company_params)
+      redirect_to employees_companies_path, notice: "Sucesso"
     else
       render action: 'edit'
     end
@@ -23,11 +23,11 @@ class Employees::CompaniesController < Employees::ApplicationController
   private
 
     def set_company
-      @job = Job.find(params[:id])
+      @company = Company.find(params[:id])
     end
 
-    def job_params
-      params.require(:job).permit(:category_id, :title, :company_id, :city_id, :link, :description)
+    def company_params
+      params.require(:company).permit(:name)
     end
 
 end

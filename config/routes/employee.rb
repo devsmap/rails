@@ -25,7 +25,7 @@ namespace :employees do
   end
 
   # Companies
-  resources :companies, only: [:index, :edit] do
+  resources :companies, only: [:index, :edit, :update] do
     # member do
     #   get '/tab/:tab', action: :show, as: :show,
     #                    tab: /users/

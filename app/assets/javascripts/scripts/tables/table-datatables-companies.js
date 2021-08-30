@@ -34,7 +34,7 @@ $(function () {
           searchable: false,
           render: function (data, type, full, meta) {
             return (
-              '<a href="/employees/jobs/'+full["id"]+'/edit" class="item-edit">' +
+              '<a href="/employees/companies/'+full["id"]+'/edit" class="item-edit">' +
                 feather.icons['edit'].toSvg({ class: 'font-small-4' }) + 
               '</a>'
             );
