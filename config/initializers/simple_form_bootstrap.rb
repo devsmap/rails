@@ -113,7 +113,7 @@ SimpleForm.setup do |config|
   end
 
   # vertical select input
-  config.wrappers :vertical_select, class: 'mb-3' do |b|
+  config.wrappers :vertical_select, class: 'mb-1' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'form-label'
@@ -123,7 +123,7 @@ SimpleForm.setup do |config|
   end
 
   # vertical multi select
-  config.wrappers :vertical_multi_select, class: 'mb-3' do |b|
+  config.wrappers :vertical_multi_select, class: 'mb-1' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'form-label'
@@ -220,7 +220,7 @@ SimpleForm.setup do |config|
   end
 
   # horizontal select input
-  config.wrappers :horizontal_select, class: 'row mb-3' do |b|
+  config.wrappers :horizontal_select, class: 'row mb-1' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'col-sm-3 col-form-label'
@@ -232,7 +232,7 @@ SimpleForm.setup do |config|
   end
 
   # horizontal multi select
-  config.wrappers :horizontal_multi_select, class: 'row mb-3' do |b|
+  config.wrappers :horizontal_multi_select, class: 'row mb-1' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'col-sm-3 col-form-label'
@@ -345,7 +345,7 @@ SimpleForm.setup do |config|
   end
 
   # custom multi select
-  config.wrappers :floating_labels_select, class: 'form-floating mb-3' do |b|
+  config.wrappers :floating_labels_select, class: 'form-floating mb-1' do |b|
     b.use :html5
     b.optional :readonly
     b.use :input, class: 'form-select', error_class: 'is-invalid', valid_class: 'is-valid'
@@ -364,7 +364,7 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
     b.use :label, class: 'form-label'
-    b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
+    b.use :input, class: 'form-control', error_class: 'is-invalid'
     b.use :full_error, wrap_with: { class: 'invalid-feedback' }
     b.use :hint, wrap_with: { class: 'form-text' }
   end

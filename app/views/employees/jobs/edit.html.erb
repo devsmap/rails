@@ -1,82 +1,79 @@
 <section id="basic-vertical-layouts">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">
-                      <i data-feather="terminal"></i>
-                      <span><%= @job.title %></span>
-                    </h4>
-                </div>
-                <div class="card-body">
-                    <form class="form form-vertical">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="first-name-vertical">Tecnologia</label>
-                                    <select id="select2-basic" class="select2 form-select">
-                                      <% Category.where(parent_id: nil).each do |category| %>
-                                        <option <%= category.id == @job.category_id ? 'selected' : '' %> value="<%= category.id %>"><%= category.name %></option>
-                                      <% end %>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="email-id-vertical">Titulo</label>
-                                    <input type="text" id="email-id-vertical" class="form-control" name="email-id" value="<%= @job.title %>"/>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="contact-info-vertical">Empresa</label>
-                                    <input type="text" id="contact-info-vertical" class="form-control" name="contact" value="<%= @job.company %>"/>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="mb-1">
-                                    <label class="form-label" for="pais-vertical">País</label>
-                                    <select class="form-select">
-                                      <% Country.all.each do |country| %>
-                                        <option <%= country.id == @job.city.state.country_id ? 'selected' : '' %> value="<%= country.id %>"><%= country.emoji %> <%= country.name %></option>
-                                      <% end %>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="mb-1">
-                                    <label class="form-label" for="password-vertical">Estado</label>
-                                    <select class="form-select">
-                                      <% Country.all.each do |country| %>
-                                        <option <%= country.id == @job.city.state.country_id ? 'selected' : '' %> value="<%= country.id %>"><%= country.emoji %> <%= country.name %></option>
-                                      <% end %>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="mb-1">
-                                    <label class="form-label" for="password-vertical">Cidade</label>
-                                    <select class="form-select">
-                                      <% Country.all.each do |country| %>
-                                        <option <%= country.id == @job.city.state.country_id ? 'selected' : '' %> value="<%= country.id %>"><%= country.emoji %> <%= country.name %></option>
-                                      <% end %>
-                                    </select>
-                                </div>
-                            </div>   
-                            <div class="col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="exampleFormControlTextarea1">Descrição</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"><%= @job.description %></textarea>
-                                </div>
-                            </div>      
-
-                            <div class="col-12">
-                                <button type="reset" class="btn btn-primary me-1">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">
+              <i data-feather="terminal"></i>
+              <span><%= @job.title %></span>
+            </h4>
         </div>
+        <div class="card-body">
+          <%= simple_form_for [:employees, @job], html: {class: "form form-vertical"} do |f| %>
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-1">
+                  <label class="form-label" for="job_category_id">Tecnologia</label>
+                  <%= f.association :category, 
+                                    collection: Category.where(parent_id: nil), 
+                                    label: false, 
+                                    input_html: { class: 'select2 form-select' } %>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="mb-1">
+                  <%= f.input :title, as: :string, label: "Titulo" %>       
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="mb-1">
+                  <%= f.input :company, as: :string, label: "Empresa" %> 
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-1">
+                  <label class="form-label" for="pais-vertical">País</label>
+                  <select class="form-select">
+                    <% Country.all.each do |country| %>
+                      <option <%= country.id == @job.city.state.country_id ? 'selected' : '' %> value="<%= country.id %>"><%= country.emoji %> <%= country.name %></option>
+                    <% end %>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-1">
+                  <label class="form-label" for="password-vertical">Estado</label>
+                  <select class="form-select">
+                    <% Country.all.each do |country| %>
+                      <option <%= country.id == @job.city.state.country_id ? 'selected' : '' %> value="<%= country.id %>"><%= country.emoji %> <%= country.name %></option>
+                    <% end %>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-1">
+                  <label class="form-label" for="password-vertical">Cidade</label>
+                  <select class="form-select">
+                    <% Country.all.each do |country| %>
+                      <option <%= country.id == @job.city.state.country_id ? 'selected' : '' %> value="<%= country.id %>"><%= country.emoji %> <%= country.name %></option>
+                    <% end %>
+                  </select>
+                </div>
+              </div>   
+              <div class="col-12">
+                <div class="mb-1">
+                  <label class="form-label" for="exampleFormControlTextarea1">Descrição</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"><%= @job.description %></textarea>
+                </div>
+              </div>      
+
+              <div class="col-12">
+                <button type="reset" class="btn btn-primary me-1">Salvar</button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
+  </div>
 </section>

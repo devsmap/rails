@@ -33,7 +33,7 @@ namespace :employees do
   end
 
   # Jobs
-  resources :jobs, only: [:index, :edit] do
+  resources :jobs, only: [:index, :edit, :update] do
     # member do
     #   get '/tab/:tab', action: :show, as: :show,
     #                    tab: /users/
