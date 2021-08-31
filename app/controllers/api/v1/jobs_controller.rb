@@ -10,6 +10,7 @@ class Api::V1::JobsController < Api::V1::ApplicationController
                        ,companies.name as company_name")
               .joins(:category, :company)
               .where(category_id: params[:category_id].to_i, city_id: params[:city_id].to_i)
+              .order(published_at: :desc)
 
     jobs.each do |job|
       jobs_json << {

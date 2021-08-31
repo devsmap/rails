@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.3'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'rack-cors'
 
 # Security
 gem 'bcrypt', '~> 3.1.7'
@@ -31,7 +32,6 @@ gem 'acts_as_paranoid'
 gem "enumerize"
 gem 'postmark-rails'
 gem 'ajax-datatables-rails'
-gem 'friendly_id', '~> 5.4.0'
 
 # Frontend
 gem 'sass-rails', '~> 5.0'

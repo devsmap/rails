@@ -2,6 +2,9 @@ namespace :google do
   namespace :jobs do
     desc "Scrap google jobs."
     task collect: :environment do
+
+      starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+
       Country.all.each do |country|
         State.where(country_id: country.id).each do |state|
           Category.where(parent_id: nil).each do |category|  
@@ -12,6 +15,9 @@ namespace :google do
       end
 
       Rake::Task["google:jobs:detail"].invoke
+
+      ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+      puts (ending - starting)
     end
   end
 end
