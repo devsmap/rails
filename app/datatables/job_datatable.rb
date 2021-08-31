@@ -6,7 +6,7 @@ class JobDatatable < AjaxDatatablesRails::ActiveRecord
     @view_columns ||= {
       id:           { source: "Job.id", orderable: false, searchable: false },
       category:     { source: "Job.category.name", searchable: false, orderable: false },
-      company:      { source: "Job.company.name", cond: :like, searchable: true, orderable: true },
+      company:      { source: "Job.company.name", searchable: false, orderable: false },
       city:         { source: "Job.city.name", searchable: false, orderable: false },
       title:        { source: "Job.title", cond: :like, searchable: true, orderable: true },
       published_at: { source: "Job.published_at", cond: :like, searchable: false, orderable: true },

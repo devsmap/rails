@@ -32,6 +32,11 @@ $(function () {
           searchable: false
         }, 
         {
+          targets: 2,
+          orderable: true,
+          searchable: false
+        },         
+        {
           targets: 3,
           orderable: false,
           searchable: false

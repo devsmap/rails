@@ -12,11 +12,15 @@ Rails.application.routes.draw do
   end
 
   # routes to subdomain
-  # core.devsmap.com
+  # devsmap.com/employees
   # ============================================================================
   draw :employee
 
-  # devsmap.com
+  # devsmap.com/api
+  # ============================================================================
+  draw :api  
+
+  # devsmap.com/api
   # ============================================================================
   # get '/', to: 'pages#welcome', as: :root_user 
 
