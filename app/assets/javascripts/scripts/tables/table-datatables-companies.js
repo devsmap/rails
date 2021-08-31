@@ -55,25 +55,25 @@ $(function () {
               extend: 'print',
               text: feather.icons['printer'].toSvg({ class: 'font-small-4 me-50' }) + 'Print',
               className: 'dropdown-item',
-              exportOptions: { columns: [1, 2, 3, 4, 5] }
+              exportOptions: { columns: [1,2] }
             },
             {
               extend: 'csv',
               text: feather.icons['file-text'].toSvg({ class: 'font-small-4 me-50' }) + 'Csv',
               className: 'dropdown-item',
-              exportOptions: { columns: [1, 2, 3, 4, 5] }
+              exportOptions: { columns: [1,2] }
             },
             {
               extend: 'excel',
               text: feather.icons['file'].toSvg({ class: 'font-small-4 me-50' }) + 'Excel',
               className: 'dropdown-item',
-              exportOptions: { columns: [1, 2, 3, 4, 5] }
+              exportOptions: { columns: [1,2] }
             },
             {
               extend: 'pdf',
               text: feather.icons['clipboard'].toSvg({ class: 'font-small-4 me-50' }) + 'Pdf',
               className: 'dropdown-item',
-              exportOptions: { columns: [1, 2, 3, 4, 5] }
+              exportOptions: { columns: [1,2] }
             },
           ],
           init: function (api, node, config) {
