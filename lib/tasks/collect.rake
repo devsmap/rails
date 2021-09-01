@@ -17,7 +17,7 @@ namespace :google do
       Rake::Task["google:jobs:detail"].invoke
 
       ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-      puts (ending - starting)
+      puts (ending - starting)      
     end
   end
 end
@@ -29,10 +29,13 @@ def collect(country, state, category)
 
   loop do
     url = build_url(category, state, country, scrape_erro, try_change_date)
-    response = HTTParty.get('http://api.scrapeup.com/?api_key=' + 'e39ba39678937b20bc8006d3aaa7e451' + '&url=' + CGI.escape(url))
+
+    response = HTTParty.get('http://api.scrapestack.com/scrape?access_key=' + '90967f75298c7d267c8e29f0db409701' + '&proxy_location=' + country.google_gl + '&premium_proxy=1&url=' + CGI.escape(url))
+
     puts "#{url}".blue + " (#{response.code})".white  
 
     if response.code == 200 
+
       jobs_by_requests = work_html(response.body, category, state) 
 
       try_change_date = (jobs_by_requests.size == 0 && try_change_date == 0) ? 1 : 0
@@ -57,7 +60,8 @@ def build_url(category, state, country, scrape_erro, try_change_date)
   url += "&uule=#{state.google_uule}"
   url += "&hl=#{country.google_hl}"
   url += "&gl=#{country.google_gl}"
-  url += "&location=#{CGI.escape(state.name)}#fpstate=tldetail"
+  url += "&location=#{CGI.escape(state.name)}"
+  url += "&chips=date_posted:week"
   
   url += (try_change_date == 1) ? "&htichips=date_posted:week&htischips=date_posted:week" : "&chips=date_posted:week"
 
@@ -89,7 +93,7 @@ def work_html(html, category, state)
     # Se a vaga já foi cadastrada pula o loop
     next if Google.with_deleted.exists?(job_id: "#{job_id}")
 
-    if (published_at.match(/hora|hour|minuto|minute|dia|day/))
+    if (published_at.match(/hora|hour|minuto|minute|dia|day|día/))
       if !(jobs.any? {|h| h[:token] == token})
         if !((city.empty?) || city.match(/Qualquer lugar|Anywhere|Brasil/) || (city == state.name))
 
@@ -98,7 +102,7 @@ def work_html(html, category, state)
                     
           if (title.match(/#{regex_category_name}/))
 
-            next if published_at.match(/dia|day/) && published_at.delete("^0-9").to_i > 7
+            next if published_at.match(/dia|day/) && published_at.delete("^0-9").to_i > 15
 
             puts  "#{job_id} - #{title} - #{company} - #{city} - #{published_at}".red
 
@@ -142,6 +146,6 @@ def save_jobs(country, state, category, collect)
   end
 end
 
-def write_html(html)
-  File.open('google.html', 'w') { |file| file.write(html.force_encoding("UTF-8")) }
+def write_html(state, html)
+  File.open('google_' + state.id.to_s + '.html', 'w') { |file| file.write(html.force_encoding("UTF-8")) }
 end

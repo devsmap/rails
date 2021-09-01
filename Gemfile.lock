@@ -101,6 +101,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    e2mmap (0.1.0)
     enumerize (2.4.0)
       activesupport (>= 3.2)
     erubi (1.10.0)
@@ -236,6 +237,8 @@ GEM
       sprockets (>= 3.0.0)
     text (1.3.1)
     thor (1.1.0)
+    thwait (0.2.0)
+      e2mmap
     tilt (2.0.10)
     translation (1.26)
       gettext (~> 3.2, >= 3.2.5, <= 3.3.7)
@@ -290,6 +293,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   simple_form
   sixarm_ruby_unaccent
+  thwait
   translation
   tzinfo-data
   uglifier (>= 1.3.0)
