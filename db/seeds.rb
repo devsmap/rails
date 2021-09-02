@@ -107,12 +107,14 @@ cities = JSON.parse(open("/app/db/seed/cities.json").read)
 cities.each do |city|
   unless city["latitude"].nil? || city["longitude"].nil? 
     unless City.find_by_id(city["id"]).present?
-      City.create!(id: city["id"],
-                   state_id: city["state_id"],
-                   name: city["name"], 
-                   latitude: city["latitude"], 
-                   longitude: city["longitude"],
-                   is_active: true)
+      if State.find_by_id(city["state_id"]).present?
+        City.create!(id: city["id"],
+                    state_id: city["state_id"],
+                    name: city["name"], 
+                    latitude: city["latitude"], 
+                    longitude: city["longitude"],
+                    is_active: true)
+      end                   
     end
   end
 end
