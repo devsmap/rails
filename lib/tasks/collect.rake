@@ -93,16 +93,16 @@ def work_html(html, category, state)
     # Se a vaga já foi cadastrada pula o loop
     next if Google.with_deleted.exists?(job_id: "#{job_id}")
 
-    if (published_at.match(/hora|hour|minuto|minute|dia|day|día/))
-      if !(jobs.any? {|h| h[:token] == token})
-        if !((city.empty?) || city.match(/Qualquer lugar|Anywhere|Brasil/) || (city == state.name))
+    if !(jobs.any? {|h| h[:token] == token})
+      if !((city.empty?) || city.match(/Qualquer lugar|Anywhere|Brasil/) || (city == state.name))
+        if (published_at.match(/hora|hour|minuto|minute|dia|day|día/))
+
+          next if published_at.match(/dia|day/) && published_at.delete("^0-9").to_i > 15
 
           regex_category_name =  category.name
           regex_category_name += category.childrens.exists? ? "|" + category.childrens.pluck(:name).join("|") : ""
                     
           if (title.match(/#{regex_category_name}/))
-
-            next if published_at.match(/dia|day/) && published_at.delete("^0-9").to_i > 15
 
             puts  "#{job_id} - #{title} - #{company} - #{city} - #{published_at}".red
 

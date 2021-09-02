@@ -17,7 +17,7 @@ employess.each do |employee|
       password_confirmation: employee[:password])  
   end
 end
-
+                
 ################################################################################
 # Create Languages
 ################################################################################
@@ -39,88 +39,77 @@ categories.each do |category|
     Category.create(id: category[:id], 
                     name: category[:name], 
                     parent_id: parent_id,
-                    is_active: true
-                    )    
+                    is_active: true)    
   end
 end
 
 ################################################################################
-# Create Countries, States and Cities
-# Languages: https://www.fincher.org/Utilities/CountryLanguageList.shtml
-# Timezones: https://gist.github.com/eikes/5a64b661022c756bd6522ed94770e2a6
+# Create Countries
 ################################################################################
-# Country.unscope(:where).destroy_all
-directory_countries_enable = "/app/db/seed/countries"
-json_enabled_countries     = JSON.parse(open("/app/db/seed/countries.json").read)
-json_enabled_countries.each do |enabled_country|
-
-  unless Country.find_by_id(enabled_country["id"]).present?
-
-    directory_country = "#{directory_countries_enable}/#{enabled_country["name"].downcase}"
-    country_file      = "#{directory_country}/country.json"
-    states_file       = "#{directory_country}/states.json"
-    cities_file       = "#{directory_country}/cities.json"
-  
-    if File.file?(country_file) && File.file?(states_file) && File.file?(cities_file)
+Country.destroy_all
+countries = JSON.parse(open("/app/db/seed/countries.json").read)
+countries.each do |country|
+  unless country["latitude"].nil? || country["longitude"].nil? 
+    unless Country.find_by_id(country["id"]).present?
+      uule_name   = country["name"]
+      encode_uule = "#{SPECIAL_KEY_TABLE[uule_name.force_encoding("US-ASCII").size]}#{Base64.strict_encode64(uule_name)}"
+      encode_uule = encode_uule.gsub(/[=]/, '')
       
-      ##########################################################################
-      # Create Countries
-      ##########################################################################     
-      country_json = JSON.parse(open(country_file).read)
-      country_json.each do |country|
-        uule_name = country["name"]
-        encode_uule = "#{SPECIAL_KEY_TABLE[uule_name.force_encoding("US-ASCII").size]}#{Base64.strict_encode64(uule_name)}"
-        encode_uule = encode_uule.gsub(/[=]/, '')
-
-        Country.create(id: country["id"],
-          name: country["name"], 
-          region: country["region"], 
-          subregion: country["subregion"], 
-          latitude: country["latitude"], 
-          longitude: country["longitude"], 
-          emoji: country["emoji"], 
-          google_uule: "w+CAIQICI#{encode_uule}", 
-          google_hl: enabled_country["language"], 
-          google_gl: country["iso2"].downcase,
-          time_zone: enabled_country["time_zone"],
-          is_active: true)
-      end
-
-      ##########################################################################
-      # Create States
-      ##########################################################################          
-      state_json = JSON.parse(open(states_file).read)
-      state_json.each do |state|
-        unless state["latitude"].nil? || state["longitude"].nil? 
-          uule_name = state["name"] + ', ' + enabled_country["name"]
-          encode_uule = "#{SPECIAL_KEY_TABLE[uule_name.force_encoding("US-ASCII").size]}#{Base64.strict_encode64(uule_name)}"
-          encode_uule = encode_uule.gsub(/[=]/, '')
-          State.create(id: state["id"],
-                      country_id: state["country_id"],
-                      name: state["name"], 
-                      state_code: state["state_code"], 
-                      latitude: state["latitude"], 
-                      longitude: state["longitude"],
+      Country.create!(id: country["id"],
+                      name: country["name"], 
+                      region: country["region"], 
+                      subregion: country["subregion"], 
+                      latitude: country["latitude"], 
+                      longitude: country["longitude"], 
+                      emoji: country["emoji"], 
                       google_uule: "w+CAIQICI#{encode_uule}", 
-                      is_active: true)
-        end
-      end
+                      google_gl: country["iso2"].downcase,
+                      is_active: false,
+                      is_collected: false)
+    end
+  end
+end
 
-      ##########################################################################
-      # Create Cities
-      ##########################################################################        
-      city_json = JSON.parse(open(cities_file).read)
-      city_json.each do |city|
-        unless city["latitude"].nil? || city["longitude"].nil?
-          City.create(id: city["id"],
-                      state_id: city["state_id"],
-                      name: city["name"], 
-                      latitude: city["latitude"], 
-                      longitude: city["longitude"],
-                      is_active: true)
-        end
-      end
+# ##############################################################################
+# # Create States
+# ##############################################################################
+states = JSON.parse(open("/app/db/seed/states.json").read)
+states.each do |state|
+  unless state["latitude"].nil? || state["longitude"].nil? 
+    unless State.find_by_id(state["id"]).present?
 
+      country = Country.find_by_id(state["country_id"])
+
+      uule_name = state["name"] + ', ' + country.name
+      encode_uule = "#{SPECIAL_KEY_TABLE[uule_name.force_encoding("US-ASCII").size]}#{Base64.strict_encode64(uule_name)}"
+      encode_uule = encode_uule.gsub(/[=]/, '')
+      State.create!(id: state["id"],
+                    country_id: state["country_id"],
+                    name: state["name"], 
+                    state_code: state["state_code"], 
+                    latitude: state["latitude"], 
+                    longitude: state["longitude"],
+                    google_uule: "w+CAIQICI#{encode_uule}", 
+                    is_active: false,
+                    is_collected: false)
+
+    end
+  end               
+end
+
+##############################################################################
+# Create Cities
+##############################################################################
+cities = JSON.parse(open("/app/db/seed/cities.json").read)
+cities.each do |city|
+  unless city["latitude"].nil? || city["longitude"].nil? 
+    unless City.find_by_id(city["id"]).present?
+      City.create(id: city["id"],
+                  state_id: city["state_id"],
+                  name: city["name"], 
+                  latitude: city["latitude"], 
+                  longitude: city["longitude"],
+                  is_active: true)
     end
   end
 end

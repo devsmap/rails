@@ -51,17 +51,18 @@ ActiveRecord::Schema.define(version: 2021_08_06_175312) do
   end
 
   create_table "countries", force: :cascade do |t|
-    t.string "name", null: false
     t.boolean "is_active", default: false
+    t.boolean "is_collected", default: false
+    t.string "name", null: false
     t.string "region", null: false
     t.string "subregion", null: false
     t.string "latitude", null: false
     t.string "longitude", null: false
     t.string "emoji", null: false
     t.string "google_uule", null: false
-    t.string "google_hl", null: false
     t.string "google_gl", null: false
-    t.string "time_zone", null: false
+    t.string "google_hl"
+    t.string "time_zone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_countries_on_name", unique: true
@@ -136,16 +137,17 @@ ActiveRecord::Schema.define(version: 2021_08_06_175312) do
 
   create_table "states", force: :cascade do |t|
     t.bigint "country_id", null: false
+    t.boolean "is_active", default: false
+    t.boolean "is_collected", default: false
     t.string "name", null: false
     t.string "state_code", null: false
-    t.boolean "is_active", default: false
     t.string "latitude", null: false
     t.string "longitude", null: false
     t.string "google_uule", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_states_on_country_id"
-    t.index ["name"], name: "index_states_on_name", unique: true
+    t.index ["name"], name: "index_states_on_name"
   end
 
   add_foreign_key "categories", "categories", column: "parent_id", on_delete: :cascade
