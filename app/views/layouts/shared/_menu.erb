@@ -23,14 +23,14 @@
         </li>
         <li class="nav-item <%=  params[:controller] == 'employees/companies' ? "active" : ""%> ">
           <a class="nav-link d-flex align-items-center" href="<%= employees_companies_path %>">
-            <i data-feather="globe"></i><span data-i18n="Empresas">Empresas</span>
+            <i data-feather="briefcase"></i><span data-i18n="Empresas">Empresas</span>
           </a>
         </li>
         <li class="nav-item <%= params[:controller] == 'employees/jobs' ? "active" : ""%> ">
           <a class="nav-link d-flex align-items-center" href="<%= employees_jobs_path %>">
             <i data-feather="map-pin"></i><span data-i18n="Vagas">Vagas</span>
           </a>
-        </li>                
+        </li>                        
       </ul>
     </div>
   </div>

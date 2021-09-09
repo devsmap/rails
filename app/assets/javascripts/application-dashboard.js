@@ -38,3 +38,4 @@
 //= require scripts/tables/table-datatables-companies
 
 
+
