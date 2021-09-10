@@ -43,8 +43,6 @@ def collect(country, state, category)
 
     puts "#{url}".blue + " (#{response.code})".white  
 
-    write_html(state, response.body)
-
     if response.code == 200 
 
       jobs_by_requests = work_html(response.body, category, state) 
