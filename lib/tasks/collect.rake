@@ -5,8 +5,8 @@ namespace :google do
 
       starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
-      Country.all.each do |country|
-        State.where(country_id: country.id).each do |state|
+      Country.where(is_collected: true).each do |country|
+        State.where(country_id: country.id, is_collected: true).each do |state|
           Category.where(parent_id: nil).each do |category|  
             collect = collect(country, state, category)
             save_jobs(country, state, category, collect)
@@ -17,6 +17,7 @@ namespace :google do
       Rake::Task["google:jobs:detail"].invoke
 
       ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+      
       puts (ending - starting)      
     end
   end
@@ -30,7 +31,15 @@ def collect(country, state, category)
   loop do
     url = build_url(category, state, country, scrape_erro, try_change_date)
 
-    response = HTTParty.get('http://api.scrapestack.com/scrape?access_key=' + '90967f75298c7d267c8e29f0db409701' + '&proxy_location=' + country.google_gl + '&premium_proxy=1&url=' + CGI.escape(url))
+    # response = HTTParty.get('http://api.scrapestack.com/scrape?access_key=' + '90967f75298c7d267c8e29f0db409701' + '&proxy_location=' + country.google_gl + '&premium_proxy=1&url=' + CGI.escape(url))
+
+    devise = ['mobile', 'desktop']
+    response = HTTParty.get('https://app.scrapingbee.com/api/v1/?api_key=I81S2R0M97O8YBVUHKQRFN0TYPAKG16BHNGLOYPK7WPD2G9A1KFR25N0F9IA7WAJHK9MTS16HWV19AQ4 ' + 
+                            '&custom_google=True' + 
+                            '&premium_proxy=true' + 
+                            '&country_code=' + country.google_gl + 
+                            '&device=' + devise.sample +
+                            '&url=' + CGI.escape(url))
 
     puts "#{url}".blue + " (#{response.code})".white  
 

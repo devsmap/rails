@@ -71,6 +71,31 @@ if countries.count != Country.count
   end
 end 
 
+# update countries set
+# 	is_active = true,
+# 	is_collected  = true,
+#     google_hl = aux.google_hl,
+#     time_zone = aux.time_zone
+# from (values
+#     ('United States', 'en-US', 'America/New_York'),
+#     ('Nigeria', 'en-NG', 'Africa/Lagos'),
+#     ('Ethiopia', 'om-ET', 'Africa/Addis_Ababa'),
+#     ('Congo', 'fr-CG', 'Africa/Brazzaville'),
+#     ('Egypt', 'ar-EG', 'Africa/Cairo'),
+#     ('South Africa', 'en-ZA', 'Africa/Johannesburg'),
+#     ('Tanzania', 'en-TZ', 'Africa/Dar_es_Salaam'),
+#     ('Kenya', 'en-KE', 'Africa/Nairobi'),
+#     ('Uganda', 'en-UG', 'Africa/Kampala'),
+#     ('Algeria', 'ar-DZ', 'Africa/Algiers'),
+#     ('Sudan', 'ar-SD', 'Africa/Juba'),
+#     ('Morocco', 'ar-MA', 'Africa/Casablanca'),
+#     ('Mozambique', 'pt-MZ', 'Africa/Maputo'),
+#     ('Ghana', 'en-GH', 'Africa/Accra'),
+#     ('Angola', 'pt-AO', 'Africa/Luanda'),
+#     ('Somalia', 'so-SO', 'Africa/Mogadishu')
+# ) as aux(name, google_hl, time_zone) 
+# where aux.name = countries.name;
+
 # ##############################################################################
 # # Create States
 # ##############################################################################
@@ -99,6 +124,9 @@ if states.count != State.count
     end               
   end
 end
+
+# update states set is_active = true, is_collected  = true where country_id = 233;
+
 
 ################################################################################
 # Create Cities
