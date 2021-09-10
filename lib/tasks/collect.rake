@@ -34,7 +34,7 @@ def collect(country, state, category)
     # response = HTTParty.get('http://api.scrapestack.com/scrape?access_key=' + '90967f75298c7d267c8e29f0db409701' + '&proxy_location=' + country.google_gl + '&premium_proxy=1&url=' + CGI.escape(url))
 
     devise = ['mobile', 'desktop']
-    response = HTTParty.get('https://app.scrapingbee.com/api/v1/?api_key=I81S2R0M97O8YBVUHKQRFN0TYPAKG16BHNGLOYPK7WPD2G9A1KFR25N0F9IA7WAJHK9MTS16HWV19AQ4 ' + 
+    response = HTTParty.get('https://app.scrapingbee.com/api/v1/?api_key=I81S2R0M97O8YBVUHKQRFN0TYPAKG16BHNGLOYPK7WPD2G9A1KFR25N0F9IA7WAJHK9MTS16HWV19AQ4' + 
                             '&custom_google=True' + 
                             '&premium_proxy=true' + 
                             '&country_code=' + country.google_gl + 
@@ -42,6 +42,8 @@ def collect(country, state, category)
                             '&url=' + CGI.escape(url))
 
     puts "#{url}".blue + " (#{response.code})".white  
+
+    write_html(state, response.body)
 
     if response.code == 200 
 
