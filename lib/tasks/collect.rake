@@ -38,7 +38,6 @@ def collect(country, state, category)
                             '&custom_google=True' + 
                             '&premium_proxy=true' + 
                             '&country_code=' + country.google_gl + 
-                            '&device=' + devise.sample +
                             '&url=' + CGI.escape(url))
 
     puts "#{url}".blue + " (#{response.code})".white  
