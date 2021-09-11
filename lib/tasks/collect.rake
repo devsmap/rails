@@ -67,9 +67,6 @@ def build_url(category, state, country, scrape_erro, try_change_date)
   url += "q=#{CGI.escape(state.name)}+#{CGI.escape(category.name)}"
   url += "&ibp=htl;jobs"
   url += "&uule=#{state.google_uule}"
-  url += "&hl=#{country.google_hl}"
-  url += "&gl=#{country.google_gl}"
-  url += "&location=#{CGI.escape(state.name)}"
   url += "&chips=date_posted:week"
   
   url += (try_change_date == 1) ? "&htichips=date_posted:week&htischips=date_posted:week" : "&chips=date_posted:week"

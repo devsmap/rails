@@ -71,30 +71,22 @@ if countries.count != Country.count
   end
 end 
 
-# update countries set
-# 	is_active = true,
-# 	is_collected  = true,
-#     google_hl = aux.google_hl,
-#     time_zone = aux.time_zone
+# update states set
+#     is_active = true,
+#  	is_collected  = true
 # from (values
-#     ('United States', 'en-US', 'America/New_York'),
-#     ('Nigeria', 'en-NG', 'Africa/Lagos'),
-#     ('Ethiopia', 'om-ET', 'Africa/Addis_Ababa'),
-#     ('Congo', 'fr-CG', 'Africa/Brazzaville'),
-#     ('Egypt', 'ar-EG', 'Africa/Cairo'),
-#     ('South Africa', 'en-ZA', 'Africa/Johannesburg'),
-#     ('Tanzania', 'en-TZ', 'Africa/Dar_es_Salaam'),
-#     ('Kenya', 'en-KE', 'Africa/Nairobi'),
-#     ('Uganda', 'en-UG', 'Africa/Kampala'),
-#     ('Algeria', 'ar-DZ', 'Africa/Algiers'),
-#     ('Sudan', 'ar-SD', 'Africa/Juba'),
-#     ('Morocco', 'ar-MA', 'Africa/Casablanca'),
-#     ('Mozambique', 'pt-MZ', 'Africa/Maputo'),
-#     ('Ghana', 'en-GH', 'Africa/Accra'),
-#     ('Angola', 'pt-AO', 'Africa/Luanda'),
-#     ('Somalia', 'so-SO', 'Africa/Mogadishu')
-# ) as aux(name, google_hl, time_zone) 
-# where aux.name = countries.name;
+#     (233, 'Kano State'), -- United States
+#     (233, 'Lagos'), -- United States
+#     (233, 'Kaduna State'), -- United States
+#     (233, 'Katsina State'), -- United States
+#     (233, 'Oyo State'), -- United States
+#     (233, 'Bauchi State'), -- United States
+#     (233, 'Jigawa State'), -- United States
+#     (233, 'Benue State'), -- United States
+#     (233, 'Anambra State'), -- United States
+#     (233, 'Borno State') -- United States                         
+# ) as aux(country_id, name) 
+# where aux.name = states.name and aux.country_id = states.country_id;
 
 # ##############################################################################
 # # Create States
@@ -124,9 +116,6 @@ if states.count != State.count
     end               
   end
 end
-
-# update states set is_active = true, is_collected  = true where country_id = 233;
-
 
 ################################################################################
 # Create Cities
